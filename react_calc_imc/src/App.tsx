@@ -42,9 +42,9 @@ const App = () => {
             value={weightField > 0 ? weightField : ""}
             onChange={e => setWeightField(parseFloat(e.target.value))}
           />
+        <button onClick={handleCalculateButton}>Calcular</button>
         </div>
 
-        <button onClick={handleCalculateButton}>Calcular</button>
         <div className={styles.rightSide}>...</div>
       </div>
     </div>
