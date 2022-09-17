@@ -45,6 +45,7 @@ body {
 
 .container .leftSide button {
 background-color: #227c9d;
+border: 0;
 color: #fff;
 font-size: 15px;
 border-radius: 10px;
