@@ -1,18 +1,19 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 import poweredImage from "./assets/powered.png";
+import { GridItem } from "./components/GridItem";
 
-import {levels, calculateImc} from './helpers/imc';
+import { levels, calculateImc } from "./helpers/imc";
 
 const App = () => {
   const [heightField, setHeightField] = useState<number>(0);
   const [weightField, setWeightField] = useState<number>(0);
 
   const handleCalculateButton = () => {
-    if(heightField && weightField) {
+    if (heightField && weightField) {
       const imc = weightField / (heightField * heightField);
       alert(`Seu IMC é ${imc.toFixed(2)}`);
-    }else{
+    } else {
       alert("Preencha todos os campos!");
     }
   };
@@ -36,18 +37,24 @@ const App = () => {
             type="number"
             placeholder="Digite a sua altura. EX: 1.5 (em metros)"
             value={heightField > 0 ? heightField : ""}
-            onChange={e => setHeightField(parseFloat(e.target.value))}
+            onChange={(e) => setHeightField(parseFloat(e.target.value))}
           />
           <input
             type="number"
             placeholder="Digite o seu peso. EX: 75.3 (em kg)"
             value={weightField > 0 ? weightField : ""}
-            onChange={e => setWeightField(parseFloat(e.target.value))}
+            onChange={(e) => setWeightField(parseFloat(e.target.value))}
           />
-        <button onClick={handleCalculateButton}>Calcular</button>
+          <button onClick={handleCalculateButton}>Calcular</button>
         </div>
 
-        <div className={styles.rightSide}>...</div>
+        <div className={styles.rightSide}>
+          <div className={styles.grid}>
+            {levels.map((item, key) => (
+             <GridItem key={key} item={item} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
